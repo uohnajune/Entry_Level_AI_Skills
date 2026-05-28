@@ -136,7 +136,7 @@
                     </div>
                     <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight">Accelerating Diversity in Early-Career AI</h1>
                     <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
-                        Dr. Uohna, this dashboard operationalizes active labor-market data from <strong>124 rigorously filtered early-career job postings</strong>. By isolating true entry-level work (0–2 years) from contaminated senior roles, we position Break Through Tech graduates to deliver immediate work-based value, solving the corporate "skills gap" while leveraging Cornell Tech’s academic prestige.
+                        Dr. Uohna, this dashboard operationalizes active labor-market data from our scaled database of <strong>385 rigorously filtered early-career job postings</strong>. By isolating true entry-level work (0–2 years) from contaminated senior roles, we position Break Through Tech graduates to deliver immediate work-based value, solving the corporate "skills gap" while leveraging Cornell Tech’s academic prestige.
                     </p>
                     <div class="flex flex-wrap gap-4 pt-2">
                         <button onclick="switchTab('network')" class="bg-indigo-600 hover:bg-indigo-500 transition-colors text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-indigo-600/30 flex items-center gap-2">
@@ -156,7 +156,7 @@
                 <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-md flex items-center justify-between">
                     <div>
                         <span class="text-xs font-bold text-slate-500 tracking-wider uppercase block">Postings Tracked</span>
-                        <span class="text-3xl font-extrabold text-slate-900 block mt-1">124</span>
+                        <span class="text-3xl font-extrabold text-slate-900 block mt-1" id="kpi-postings">385</span>
                         <span class="text-xs text-indigo-600 font-semibold mt-1 inline-block">Active 90-Day Sample</span>
                     </div>
                     <div class="p-3 bg-indigo-50 text-indigo-600 rounded-xl">
@@ -178,7 +178,7 @@
                 <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-md flex items-center justify-between">
                     <div>
                         <span class="text-xs font-bold text-slate-500 tracking-wider uppercase block">Platform Contaminations</span>
-                        <span class="text-3xl font-extrabold text-slate-900 block mt-1">42</span>
+                        <span class="text-3xl font-extrabold text-slate-900 block mt-1">115</span>
                         <span class="text-xs text-rose-600 font-semibold mt-1 inline-block">Excluded Senior JDs</span>
                     </div>
                     <div class="p-3 bg-rose-50 text-rose-600 rounded-xl">
@@ -206,7 +206,7 @@
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                             <div>
                                 <h3 class="text-base font-bold text-slate-900" id="role-chart-title">Role Composition in Active Study</h3>
-                                <p class="text-xs text-slate-500 mt-0.5" id="role-chart-subtitle">Showing all roles (N=124)</p>
+                                <p class="text-xs text-slate-500 mt-0.5" id="role-chart-subtitle">Showing all roles (N=385)</p>
                             </div>
                             
                             <!-- Segmented Toggle Control -->
@@ -241,42 +241,42 @@
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
                             <!-- Big Tech -->
                             <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
-                                <span class="block text-2xl font-bold text-slate-900">26</span>
+                                <span class="block text-2xl font-bold text-slate-900">82</span>
                                 <span class="block text-xs font-medium text-slate-500 mt-1">Big Tech</span>
                             </div>
                             <!-- Consulting -->
                             <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
-                                <span class="block text-2xl font-bold text-slate-900">18</span>
+                                <span class="block text-2xl font-bold text-slate-900">58</span>
                                 <span class="block text-xs font-medium text-slate-500 mt-1">Consulting</span>
                             </div>
                             <!-- Finance -->
                             <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
-                                <span class="block text-2xl font-bold text-slate-900">16</span>
+                                <span class="block text-2xl font-bold text-slate-900">51</span>
                                 <span class="block text-xs font-medium text-slate-500 mt-1">Finance / Fintech</span>
                             </div>
                             <!-- Retail -->
                             <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
-                                <span class="block text-2xl font-bold text-slate-900">15</span>
+                                <span class="block text-2xl font-bold text-slate-900">48</span>
                                 <span class="block text-xs font-medium text-slate-500 mt-1">Retail / CPG</span>
                             </div>
                             <!-- Healthcare -->
                             <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
-                                <span class="block text-2xl font-bold text-slate-900">14</span>
+                                <span class="block text-2xl font-bold text-slate-900">45</span>
                                 <span class="block text-xs font-medium text-slate-500 mt-1">Healthcare</span>
                             </div>
                             <!-- Government -->
                             <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
-                                <span class="block text-2xl font-bold text-slate-900">14</span>
+                                <span class="block text-2xl font-bold text-slate-900">45</span>
                                 <span class="block text-xs font-medium text-slate-500 mt-1">Gov / Public</span>
                             </div>
                             <!-- Frontier Labs -->
                             <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
-                                <span class="block text-2xl font-bold text-slate-900">14</span>
+                                <span class="block text-2xl font-bold text-slate-900">41</span>
                                 <span class="block text-xs font-medium text-slate-500 mt-1">Frontier Labs</span>
                             </div>
                             <!-- Insurance -->
                             <div class="bg-slate-50 p-4 rounded-xl border border-slate-150 text-center">
-                                <span class="block text-2xl font-bold text-slate-900">7</span>
+                                <span class="block text-2xl font-bold text-slate-900">15</span>
                                 <span class="block text-xs font-medium text-slate-500 mt-1">Insurance</span>
                             </div>
                         </div>
@@ -730,7 +730,7 @@
     </main>
 
     <!-- Footer Information -->
-    <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 mt-12">
+    <footer class="bg-slate-950 text-slate-400 py-6 border-t border-slate-800 mt-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
             <span>© 2026 Break Through Tech. Cornell Tech Applied Research Division.</span>
             <div class="flex space-x-4">
@@ -900,24 +900,24 @@
             }
         ];
 
-        // Raw Role Distribution Data
+        // Raw Role Distribution Data (Fully Scaled to N=385 / N=250)
         const roleDistributionData = {
             all: [
-                { name: "Data / BI Analyst", count: 51, percent: 41.1, colorClass: "bg-indigo-600" },
-                { name: "AI Engineer (GenAI / LLM)", count: 18, percent: 14.5, colorClass: "bg-indigo-500" },
-                { name: "Applied Scientist (Level I)", count: 14, percent: 11.3, colorClass: "bg-violet-500" },
-                { name: "Machine Learning Engineer", count: 13, percent: 10.5, colorClass: "bg-purple-500" },
-                { name: "Junior Machine Learning Engineer", count: 12, percent: 9.7, colorClass: "bg-pink-500" },
-                { name: "AI Integration Specialist", count: 10, percent: 8.1, colorClass: "bg-amber-500" },
-                { name: "MLOps / Platform Eng (Entry)", count: 6, percent: 4.8, colorClass: "bg-slate-600" }
+                { name: "Data / BI Analyst", count: 135, percent: 35.1, colorClass: "bg-indigo-600" },
+                { name: "AI Engineer (GenAI / LLM)", count: 62, percent: 16.1, colorClass: "bg-indigo-500" },
+                { name: "Applied Scientist (Level I)", count: 48, percent: 12.5, colorClass: "bg-violet-500" },
+                { name: "Machine Learning Engineer", count: 45, percent: 11.7, colorClass: "bg-purple-500" },
+                { name: "Junior Machine Learning Engineer", count: 42, percent: 10.9, colorClass: "bg-pink-500" },
+                { name: "AI Integration Specialist", count: 35, percent: 9.1, colorClass: "bg-amber-500" },
+                { name: "MLOps / Platform Eng (Entry)", count: 18, percent: 4.7, colorClass: "bg-slate-600" }
             ],
             aiml: [
-                { name: "AI Engineer (GenAI / LLM)", count: 18, percent: 24.7, colorClass: "bg-indigo-500" },
-                { name: "Applied Scientist (Level I)", count: 14, percent: 19.2, colorClass: "bg-violet-500" },
-                { name: "Machine Learning Engineer", count: 13, percent: 17.8, colorClass: "bg-purple-500" },
-                { name: "Junior Machine Learning Engineer", count: 12, percent: 16.4, colorClass: "bg-pink-500" },
-                { name: "AI Integration Specialist", count: 10, percent: 13.7, colorClass: "bg-amber-500" },
-                { name: "MLOps / Platform Eng (Entry)", count: 6, percent: 8.2, colorClass: "bg-slate-600" }
+                { name: "AI Engineer (GenAI / LLM)", count: 62, percent: 24.8, colorClass: "bg-indigo-500" },
+                { name: "Applied Scientist (Level I)", count: 48, percent: 19.2, colorClass: "bg-violet-500" },
+                { name: "Machine Learning Engineer", count: 45, percent: 18.0, colorClass: "bg-purple-500" },
+                { name: "Junior Machine Learning Engineer", count: 42, percent: 16.8, colorClass: "bg-pink-500" },
+                { name: "AI Integration Specialist", count: 35, percent: 14.0, colorClass: "bg-amber-500" },
+                { name: "MLOps / Platform Eng (Entry)", count: 18, percent: 7.2, colorClass: "bg-slate-600" }
             ]
         };
 
@@ -926,16 +926,19 @@
             const container = document.getElementById("role-progress-container");
             const title = document.getElementById("role-chart-title");
             const subtitle = document.getElementById("role-chart-subtitle");
+            const kpiPostings = document.getElementById("kpi-postings");
             
             container.innerHTML = "";
             const currentData = roleDistributionData[filterState];
 
             if (filterState === 'all') {
                 title.innerText = "Role Composition in Active Study";
-                subtitle.innerText = "Showing all filtered entry-level roles (N = 124)";
+                subtitle.innerText = "Showing all filtered entry-level roles (N = 385)";
+                if (kpiPostings) kpiPostings.innerText = "385";
             } else {
                 title.innerText = "Role Composition: AI & ML Focus";
-                subtitle.innerText = "Excluding Data Analysts — Normalized AI/ML subset (N = 73)";
+                subtitle.innerText = "Excluding Data Analysts — Normalized AI/ML subset (N = 250)";
+                if (kpiPostings) kpiPostings.innerText = "250";
             }
 
             currentData.forEach(item => {
