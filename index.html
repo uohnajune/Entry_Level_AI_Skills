@@ -42,7 +42,7 @@
             filter: drop-shadow(0px 0px 8px rgba(239, 68, 68, 0.7)); /* Glowing Crimson Red Aura */
         }
         .link {
-            stroke-opacity: 0.55; /* Higher baseline visibility on dark background */
+            stroke-opacity: 0.65; /* Highly visible lines */
             transition: stroke-opacity 0.15s ease, stroke-width 0.15s ease, stroke 0.15s ease;
         }
         .node-label {
@@ -750,6 +750,13 @@
 
     <!-- JS Code containing verified labor metrics and templates -->
     <script>
+        // Global variables for D3 so that it can be safely resized and modified dynamically
+        let simulation;
+        let svg;
+        let node;
+        let link;
+        let graphInitialized = false;
+
         // Tab system
         function switchTab(tabName) {
             document.querySelectorAll('main > section').forEach(sec => sec.classList.add('hidden'));
@@ -760,9 +767,12 @@
             });
             document.getElementById('btn-' + tabName).className = "tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 bg-indigo-50 text-indigo-700 whitespace-nowrap";
 
-            // If switching to network tab, trigger graph initialization once
+            // When switching to the network tab, trigger graph initialization once and run resize centering checks
             if (tabName === 'network') {
-                setTimeout(initNetworkGraph, 100);
+                setTimeout(() => {
+                    initNetworkGraph();
+                    resizeGraph();
+                }, 100);
             }
         }
 
@@ -1160,7 +1170,6 @@ Break Through Tech, a Cornell Tech Initiative`;
         }
 
         // ==================== D3 INTERACTIVE ONTOLOGY GRAPH ====================
-        let graphInitialized = false;
 
         function initNetworkGraph() {
             if (graphInitialized) return;
@@ -1223,17 +1232,17 @@ Break Through Tech, a Cornell Tech Initiative`;
             };
 
             const container = document.getElementById("graph-container");
-            const width = container.clientWidth;
-            const height = container.clientHeight;
+            const width = container.clientWidth || 800;  // Highly robust fallback configuration
+            const height = container.clientHeight || 550; // Highly robust fallback configuration
 
-            const svg = d3.select("#network-svg")
+            svg = d3.select("#network-svg")
                 .attr("viewBox", [0, 0, width, height]);
 
             // Clear any old contents
             svg.selectAll("*").remove();
 
-            // Link strength and forces tailored for full-width landscape
-            const simulation = d3.forceSimulation(graphData.nodes)
+            // Setup force simulator with global mapping values
+            simulation = d3.forceSimulation(graphData.nodes)
                 .force("link", d3.forceLink(graphData.links).id(d => d.id).distance(140))
                 .force("charge", d3.forceManyBody().strength(-400))
                 .force("center", d3.forceCenter(width / 2, height / 2))
@@ -1255,7 +1264,7 @@ Break Through Tech, a Cornell Tech Initiative`;
                 .attr("d", "M0,-5L10,0L0,5");
 
             // Render links
-            const link = svg.append("g")
+            link = svg.append("g")
                 .selectAll("line")
                 .data(graphData.links)
                 .enter().append("line")
@@ -1265,7 +1274,7 @@ Break Through Tech, a Cornell Tech Initiative`;
                 .attr("marker-end", "url(#arrow)");
 
             // Render nodes
-            const node = svg.append("g")
+            node = svg.append("g")
                 .selectAll("g")
                 .data(graphData.nodes)
                 .enter().append("g")
@@ -1416,11 +1425,28 @@ Break Through Tech, a Cornell Tech Initiative`;
             }
         }
 
+        // Auto-centering scaling engine for resizing
+        function resizeGraph() {
+            const container = document.getElementById("graph-container");
+            const w = container.clientWidth;
+            const h = container.clientHeight;
+            if (w > 0 && h > 0 && typeof simulation !== 'undefined') {
+                d3.select("#network-svg")
+                  .attr("viewBox", [0, 0, w, h]);
+                simulation.force("center", d3.forceCenter(w / 2, h / 2));
+                simulation.alpha(0.3).restart();
+            }
+        }
+
+        // Hook global resize listeners
+        window.addEventListener("resize", resizeGraph);
+
         // Initialization
         window.onload = function() {
             renderRoleComposition('all');
             renderTasks('all');
             generateProposal();
+            initNetworkGraph(); // Run baseline on hide to build spatial elements
         }
     </script>
 </body>
