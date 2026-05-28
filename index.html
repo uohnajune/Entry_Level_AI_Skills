@@ -29,7 +29,7 @@
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #cbd5e1;
+            background: #94a3b8;
         }
         /* D3 Node Styling */
         .node {
@@ -39,7 +39,7 @@
         }
         .node:hover {
             stroke-width: 3.5px;
-            filter: drop-shadow(0px 0px 8px rgba(99, 102, 241, 0.6));
+            filter: drop-shadow(0px 0px 8px rgba(239, 68, 68, 0.6)); /* Radiant Red glow on hover */
         }
         .link {
             stroke-opacity: 0.25;
@@ -70,7 +70,7 @@
                         </svg>
                     </div>
                     <div>
-                        <span class="font-extrabold text-lg tracking-tight block">Dr. Uohna's Tool</span>
+                        <span class="font-extrabold text-lg tracking-tight block">Break Through Tech</span>
                         <span class="text-xs text-indigo-300 font-semibold tracking-wider uppercase">AI/ML & Data Career Intelligence Hub</span>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                             Interactive Network Graph
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </button>
-                        <button onclick="switchTab('proposal')" class="bg-slate-800 hover:bg-slate-700 border border-slate-705 transition-colors text-slate-200 font-semibold text-sm px-5 py-2.5 rounded-xl">
+                        <button onclick="switchTab('proposal')" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 transition-colors text-slate-200 font-semibold text-sm px-5 py-2.5 rounded-xl">
                             Build Sponsor Proposals
                         </button>
                     </div>
@@ -224,7 +224,7 @@
                                 <span class="text-slate-900">18 Postings (14.5%)</span>
                             </div>
                             <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
-                                <div class="bg-indigo-500 h-full rounded-full" style="width: 14.5%"></div>
+                                <div class="bg-indigo-50 h-full rounded-full" style="width: 14.5%"></div>
                             </div>
                         </div>
                         <!-- Applied Scientist -->
@@ -234,7 +234,7 @@
                                 <span class="text-slate-900">14 Postings (11.3%)</span>
                             </div>
                             <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
-                                <div class="bg-violet-500 h-full rounded-full" style="width: 11.3%"></div>
+                                <div class="bg-violet-50 h-full rounded-full" style="width: 11.3%"></div>
                             </div>
                         </div>
                         <!-- MLE -->
@@ -423,7 +423,7 @@
                     <p class="text-slate-500 text-xs mt-0.5">Click any node in the map to run the active "Objection Rebuttal Red Teamer" panel.</p>
                 </div>
                 <div class="flex items-center gap-2 text-xs font-semibold">
-                    <span class="inline-block h-2.5 w-2.5 rounded-full bg-indigo-700"></span> <span class="text-slate-600 mr-2">AI/ML Course</span>
+                    <span class="inline-block h-2.5 w-2.5 rounded-full bg-red-600"></span> <span class="text-slate-600 mr-2">BTT Anchor</span>
                     <span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500"></span> <span class="text-slate-600 mr-2">Industries</span>
                     <span class="inline-block h-2.5 w-2.5 rounded-full bg-blue-500"></span> <span class="text-slate-600 mr-2">Roles</span>
                     <span class="inline-block h-2.5 w-2.5 rounded-full bg-purple-500"></span> <span class="text-slate-600 mr-2">Tasks</span>
@@ -451,17 +451,17 @@
                     </div>
                 </div>
 
-                <!-- Strategic Inspector Panel (Moved Below, Formatted Horizontally) -->
+                <!-- Strategic Inspector Panel -->
                 <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-md">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <!-- Left Column: Node Core Information -->
                         <div class="space-y-4">
                             <div class="flex items-center justify-between pb-3 border-b border-slate-100">
                                 <div>
-                                    <span class="text-[10px] font-bold text-indigo-600 uppercase tracking-wider block" id="inspect-node-type">Node Inspector</span>
+                                    <span class="text-[10px] font-bold text-red-600 uppercase tracking-wider block" id="inspect-node-type">STRATEGIC NODE</span>
                                     <h3 class="text-lg font-bold text-slate-900" id="inspect-node-name">BTT Applied AML Foundations</h3>
                                 </div>
-                                <span class="text-xs bg-indigo-50 border border-indigo-200 text-indigo-700 font-bold px-2.5 py-1 rounded-lg" id="inspect-node-badge">Central Hub</span>
+                                <span class="text-xs bg-red-50 border border-red-200 text-red-700 font-bold px-2.5 py-1 rounded-lg" id="inspect-node-badge">Central Hub</span>
                             </div>
 
                             <div class="space-y-1.5">
@@ -1148,7 +1148,7 @@ Break Through Tech, a Cornell Tech Initiative`;
 
             const graphData = {
                 nodes: [
-                    { id: "AI/ML Course", label: "BTT Applied AML Foundations", group: "strategic", size: 28, desc: "Break Through Tech's core program aligning undergraduate study with immediate technical execution capabilities. Focuses on bridging technical execution gaps rather than generic administrative management.", rebuttalTitle: "Skeptic CFO Objection:", rebuttalQuote: "\"Junior candidates lack structural foresight and are too risky to integrate directly.\"", rebuttalBody: "\"Our fellows bypass abstract theoretical engineering. We build real-world experience maps—training them to clean database pipelines, deploy Docker containers, and validate system permissions on Day 1.\"" },
+                    { id: "BTT Anchor", label: "BTT Applied AML Foundations", group: "strategic", size: 28, desc: "Break Through Tech's core program aligning undergraduate study with immediate technical execution capabilities. Focuses on bridging technical execution gaps rather than generic administrative management.", rebuttalTitle: "Skeptic CFO Objection:", rebuttalQuote: "\"Junior candidates lack structural foresight and are too risky to integrate directly.\"", rebuttalBody: "\"Our fellows bypass abstract theoretical engineering. We build real-world experience maps—training them to clean database pipelines, deploy Docker containers, and validate system permissions on Day 1.\"" },
                     
                     // Industries
                     { id: "Finance", label: "Finance / Fintech Sector", group: "industry", size: 20, desc: "Heavily analytical enterprise markets requiring absolute retrospective data validation and pipeline reconciliation.", rebuttalTitle: "Risk Compliance Objection:", rebuttalQuote: "\"Our metrics are tightly governed; we cannot risk junior engineers on production pipelines.\"", rebuttalBody: "\"We train candidates in SQL data validation, metadata checking, and row-level governance, turning them into defensive pipeline monitors.\"" },
@@ -1175,10 +1175,10 @@ Break Through Tech, a Cornell Tech Initiative`;
                 ],
                 links: [
                     // Strategic Connections
-                    { source: "AI/ML Course", target: "SQL Queries" },
-                    { source: "AI/ML Course", target: "Dashboard Design" },
-                    { source: "AI/ML Course", target: "LLM App Workflows" },
-                    { source: "AI/ML Course", target: "Containerization" },
+                    { source: "BTT Anchor", target: "SQL Queries" },
+                    { source: "BTT Anchor", target: "Dashboard Design" },
+                    { source: "BTT Anchor", target: "LLM App Workflows" },
+                    { source: "BTT Anchor", target: "Containerization" },
 
                     // Sector Prioritization
                     { source: "Finance", target: "Data Analyst" },
@@ -1256,14 +1256,14 @@ Break Through Tech, a Cornell Tech Initiative`;
                 .attr("class", "node")
                 .attr("r", d => d.size)
                 .attr("fill", d => {
-                    if (d.group === 'strategic') return '#ef4444'; // Glowing Purple
+                    if (d.group === 'strategic') return '#dc2626'; // Cornell Red for BTT Anchor
                     if (d.group === 'industry') return '#10b981';  // Neon Emerald
                     if (d.group === 'role') return '#3b82f6';      // Cyber Blue
                     if (d.group === 'task') return '#8b5cf6';      // Violet
                     return '#64748b';                              // Slate Gray
                 })
                 .attr("stroke", d => {
-                    if (d.group === 'strategic') return '#c7d2fe';
+                    if (d.group === 'strategic') return '#fecaca'; // Crimson Red border
                     if (d.group === 'industry') return '#a7f3d0';
                     if (d.group === 'role') return '#bfdbfe';
                     if (d.group === 'task') return '#ddd6fe';
@@ -1366,15 +1366,20 @@ Break Through Tech, a Cornell Tech Initiative`;
                 const badge = document.getElementById("inspect-node-badge");
                 badge.innerText = d.group.toUpperCase();
                 if (d.group === 'strategic') {
-                    badge.className = "text-xs bg-indigo-50 border border-indigo-200 text-indigo-700 font-bold px-2.5 py-1 rounded-lg";
+                    badge.className = "text-xs bg-red-50 border border-red-200 text-red-700 font-bold px-2.5 py-1 rounded-lg";
+                    document.getElementById("inspect-node-type").className = "text-[10px] font-bold text-red-600 uppercase tracking-wider block";
                 } else if (d.group === 'industry') {
                     badge.className = "text-xs bg-emerald-50 border border-emerald-200 text-emerald-700 font-bold px-2.5 py-1 rounded-lg";
+                    document.getElementById("inspect-node-type").className = "text-[10px] font-bold text-emerald-600 uppercase tracking-wider block";
                 } else if (d.group === 'role') {
                     badge.className = "text-xs bg-blue-50 border border-blue-200 text-blue-700 font-bold px-2.5 py-1 rounded-lg";
+                    document.getElementById("inspect-node-type").className = "text-[10px] font-bold text-blue-600 uppercase tracking-wider block";
                 } else if (d.group === 'task') {
                     badge.className = "text-xs bg-purple-50 border border-purple-200 text-purple-700 font-bold px-2.5 py-1 rounded-lg";
+                    document.getElementById("inspect-node-type").className = "text-[10px] font-bold text-purple-600 uppercase tracking-wider block";
                 } else {
                     badge.className = "text-xs bg-slate-50 border border-slate-200 text-slate-700 font-bold px-2.5 py-1 rounded-lg";
+                    document.getElementById("inspect-node-type").className = "text-[10px] font-bold text-slate-600 uppercase tracking-wider block";
                 }
 
                 // If node is an industry, pre-populate proposal dropdown
