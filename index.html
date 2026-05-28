@@ -220,7 +220,7 @@
                             </div>
                         </div>
 
-                        <!-- Progress Bars Container (Rendered Dynamically via JS) -->
+                        <!-- Progress Bars Container -->
                         <div id="role-progress-container" class="space-y-4">
                             <!-- Dynamic rendering of bars happens here -->
                         </div>
@@ -275,7 +275,7 @@
                                 <span class="block text-xs font-medium text-slate-500 mt-1">Frontier Labs</span>
                             </div>
                             <!-- Insurance -->
-                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-150 text-center">
                                 <span class="block text-2xl font-bold text-slate-900">7</span>
                                 <span class="block text-xs font-medium text-slate-500 mt-1">Insurance</span>
                             </div>
@@ -619,7 +619,7 @@
 
                     <div class="space-y-2">
                         <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Job Posting Description Snippet</span>
-                        <div id="inspect-text" class="bg-slate-50 p-4 rounded-xl border border-slate-150 text-xs text-slate-700 leading-relaxed font-mono">
+                        <div id="inspect-text" class="bg-slate-50 p-4 rounded-xl border border-slate-155 text-xs text-slate-700 leading-relaxed font-mono">
                             "Build LLM and Agentic applications... take part in the full development cycle: from ideation and brainstorming, through implementation, to testing and evaluation. 0-2 years experience required, BS in CS or related fields."
                         </div>
                     </div>
@@ -1286,168 +1286,3 @@ Break Through Tech, a Cornell Tech Initiative`;
                 .attr("r", d => d.size)
                 .attr("fill", d => {
                     if (d.group === 'strategic') return '#dc2626'; // Cornell Red for BTT Anchor
-                    if (d.group === 'industry') return '#10b981';  // Neon Emerald
-                    if (d.group === 'role') return '#3b82f6';      // Cyber Blue
-                    if (d.group === 'task') return '#8b5cf6';      // Violet
-                    return '#64748b';                              // Slate Gray
-                })
-                .attr("stroke", d => {
-                    if (d.group === 'strategic') return '#fecaca'; // Crimson Red border
-                    if (d.group === 'industry') return '#a7f3d0';
-                    if (d.group === 'role') return '#bfdbfe';
-                    if (d.group === 'task') return '#ddd6fe';
-                    return '#cbd5e1';
-                })
-                .attr("stroke-width", 2)
-                .on("click", (event, d) => {
-                    highlightNode(d, graphData, node, link);
-                    populateInspector(d);
-                });
-
-            // Node Labels
-            node.append("text")
-                .attr("class", "node-label")
-                .attr("dy", d => d.size + 15)
-                .text(d => d.id);
-
-            // Physics tick
-            simulation.on("tick", () => {
-                link
-                    .attr("x1", d => d.source.x)
-                    .attr("y1", d => d.source.y)
-                    .attr("x2", d => d.target.x)
-                    .attr("y2", d => d.target.y);
-
-                node
-                    .attr("transform", d => `translate(${d.x},${d.y})`);
-            });
-
-            // Drag behavior
-            function drag(sim) {
-                function dragstarted(event, d) {
-                    if (!event.active) sim.alphaTarget(0.3).restart();
-                    d.fx = d.x;
-                    d.fy = d.y;
-                }
-
-                function dragged(event, d) {
-                    d.fx = event.x;
-                    d.fy = event.y;
-                }
-
-                function dragended(event, d) {
-                    if (!event.active) sim.alphaTarget(0);
-                    d.fx = null;
-                    d.fy = null;
-                }
-
-                return d3.drag()
-                    .on("start", dragstarted)
-                    .on("drag", dragged)
-                    .on("end", dragended);
-            }
-
-            // Highlighting interaction
-            function highlightNode(selectedNode, data, nodeSelection, linkSelection) {
-                // Find all connected nodes
-                const connectedNodeIds = new Set();
-                connectedNodeIds.add(selectedNode.id);
-
-                data.links.forEach(l => {
-                    if (l.source.id === selectedNode.id) connectedNodeIds.add(l.target.id);
-                    if (l.target.id === selectedNode.id) connectedNodeIds.add(l.source.id);
-                });
-
-                // Set node opacities
-                nodeSelection.selectAll("circle")
-                    .transition()
-                    .duration(200)
-                    .attr("opacity", d => connectedNodeIds.has(d.id) ? 1.0 : 0.15)
-                    .attr("stroke-width", d => d.id === selectedNode.id ? 4 : 2);
-
-                nodeSelection.selectAll("text")
-                    .transition()
-                    .duration(200)
-                    .attr("opacity", d => connectedNodeIds.has(d.id) ? 1.0 : 0.15);
-
-                // Highlight connected links
-                linkSelection
-                    .transition()
-                    .duration(200)
-                    .attr("stroke", l => {
-                        return (l.source.id === selectedNode.id || l.target.id === selectedNode.id) ? "#ef4444" : "#1e293b"; // Glow Red for selected paths
-                    })
-                    .attr("stroke-opacity", l => {
-                        return (l.source.id === selectedNode.id || l.target.id === selectedNode.id) ? 1.0 : 0.05;
-                    });
-            }
-
-            // Inspector populator
-            function populateInspector(d) {
-                document.getElementById("inspect-node-name").innerText = d.label;
-                document.getElementById("inspect-node-type").innerText = d.group.toUpperCase() + " NODE";
-                document.getElementById("inspect-node-desc").innerText = d.desc;
-                document.getElementById("rebuttal-title").innerText = d.rebuttalTitle;
-                document.getElementById("rebuttal-quote").innerText = d.rebuttalQuote;
-                document.getElementById("rebuttal-body").innerText = d.rebuttalBody;
-
-                // Set Badge styling
-                const badge = document.getElementById("inspect-node-badge");
-                badge.innerText = d.group.toUpperCase();
-                if (d.group === 'strategic') {
-                    badge.className = "text-xs bg-red-50 border border-red-200 text-red-700 font-bold px-2.5 py-1 rounded-lg";
-                    document.getElementById("inspect-node-type").className = "text-[10px] font-bold text-red-600 uppercase tracking-wider block";
-                } else if (d.group === 'industry') {
-                    badge.className = "text-xs bg-emerald-50 border border-emerald-200 text-emerald-700 font-bold px-2.5 py-1 rounded-lg";
-                    document.getElementById("inspect-node-type").className = "text-[10px] font-bold text-emerald-600 uppercase tracking-wider block";
-                } else if (d.group === 'role') {
-                    badge.className = "text-xs bg-blue-50 border border-blue-200 text-blue-700 font-bold px-2.5 py-1 rounded-lg";
-                    document.getElementById("inspect-node-type").className = "text-[10px] font-bold text-blue-600 uppercase tracking-wider block";
-                } else if (d.group === 'task') {
-                    badge.className = "text-xs bg-purple-50 border border-purple-200 text-purple-700 font-bold px-2.5 py-1 rounded-lg";
-                    document.getElementById("inspect-node-type").className = "text-[10px] font-bold text-purple-600 uppercase tracking-wider block";
-                } else {
-                    badge.className = "text-xs bg-slate-50 border border-slate-200 text-slate-700 font-bold px-2.5 py-1 rounded-lg";
-                    document.getElementById("inspect-node-type").className = "text-[10px] font-bold text-slate-600 uppercase tracking-wider block";
-                }
-
-                // If node is an industry, pre-populate proposal dropdown
-                if (d.group === 'industry') {
-                    let dropdownVal = "finance";
-                    if (d.id === "Finance") dropdownVal = "finance";
-                    else if (d.id === "Retail") dropdownVal = "retail";
-                    else if (d.id === "BigTech") dropdownVal = "tech";
-                    else if (d.id === "Insurance") dropdownVal = "insurance";
-
-                    document.getElementById("prop-industry").value = dropdownVal;
-                    generateProposal();
-                }
-            }
-        }
-
-        // Auto-centering scaling engine for resizing
-        function resizeGraph() {
-            const container = document.getElementById("graph-container");
-            const w = container.clientWidth;
-            const h = container.clientHeight;
-            if (w > 0 && h > 0 && typeof simulation !== 'undefined') {
-                d3.select("#network-svg")
-                  .attr("viewBox", [0, 0, w, h]);
-                simulation.force("center", d3.forceCenter(w / 2, h / 2));
-                simulation.alpha(0.3).restart();
-            }
-        }
-
-        // Hook global resize listeners
-        window.addEventListener("resize", resizeGraph);
-
-        // Initialization
-        window.onload = function() {
-            renderRoleComposition('all');
-            renderTasks('all');
-            generateProposal();
-            initNetworkGraph(); // Run baseline on hide to build spatial elements
-        }
-    </script>
-</body>
-</html>
