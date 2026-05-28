@@ -37,23 +37,33 @@
             stroke-width: 2px;
             transition: stroke-width 0.15s ease, filter 0.15s ease;
         }
-        .node:hover {
+        .node: hover {
             stroke-width: 3.5px;
             filter: drop-shadow(0px 0px 8px rgba(239, 68, 68, 0.6)); /* Radiant Red glow on hover */
         }
-        .link {
-            stroke-opacity: 0.25;
-            transition: stroke-opacity 0.15s ease, stroke-width 0.15s ease;
+        .node {
+            cursor: pointer;
+            stroke-width: 2px;
+            transition: stroke-width 0.15s ease, filter 0.15s ease;
         }
-        .node-label {
-            pointer-events: none;
-            font-size: 11px;
-            font-weight: 700;
-            fill: #f1f5f9; /* Crisp light text for dark canvas */
-            text-anchor: middle;
-            user-select: none;
-            text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.9), 0px 1px 5px rgba(0, 0, 0, 0.5);
+        .node: hover {
+            stroke-width: 3.5px;
+            filter: drop-shadow(0px 0px 8px rgba(239, 68, 68, 0.6)); /* Radiant Red glow on hover */
         }
+.link {
+    stroke-opacity: 0.55;
+    stroke-width: 2.5px;
+    transition: stroke-opacity 0.15s ease, stroke-width 0.15s ease;
+}
+.node-label {
+    pointer-events: none;
+    font-size: 11px;
+    font-weight: 700;
+    fill: #f1f5f9; /* Crisp light text for dark canvas */
+    text-anchor: middle;
+    user-select: none;
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.9), 0px 1px 5px rgba(0, 0, 0, 0.5);
+}
     </style>
 </head>
 <body class="bg-slate-100 text-slate-900 min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
